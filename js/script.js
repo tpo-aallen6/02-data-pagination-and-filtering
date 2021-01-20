@@ -66,3 +66,19 @@ function addPagination(list) {
 // Call functions
 showPage(data, 1);
 addPagination(data);
+
+/**
+ * Going for exceeds
+**/
+
+const h2 = document.querySelector('header h2');
+const searchBar = document.createElement('div');
+searchBar.insertAdjacentHTML('beforeend', `
+   <label for="search" class="student-search">
+   <input id="search" placeholder="Search by name...">
+   <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
+   </label>
+   `);
+h2.appendChild(searchBar);
+
+
