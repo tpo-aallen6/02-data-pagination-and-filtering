@@ -71,14 +71,13 @@ addPagination(data);
  * Going for exceeds
 **/
 
-const h2 = document.querySelector('header h2');
-const searchBar = document.createElement('div');
-searchBar.insertAdjacentHTML('beforeend', `
+const header = document.querySelector('header');
+const searchBar = `
    <label for="search" class="student-search">
    <input id="search" placeholder="Search by name...">
    <button type="button"><img src="img/icn-search.svg" alt="Search icon"></button>
    </label>
-   `);
-h2.appendChild(searchBar);
+   `;
+header.insertAdjacentHTML('beforeend', searchBar);
 
 
