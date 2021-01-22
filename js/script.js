@@ -7,9 +7,11 @@
 * This function will create and insert/append the elements needed to display a
 * "page" of nine students
 **/
+
 const studentsPerPage = 9;
 const linkList = document.querySelector('ul.link-list');
 const header = document.querySelector('header');
+let displayedStudents = Array.from(data); // shows only students that should be displayed in the app
 let studentList = document.querySelector('ul.student-list');
 
 const searchBar = `
@@ -74,8 +76,8 @@ function addPagination(list) {
       }
 }
 
-showPage(data, 1);
-addPagination(data);
+showPage(displayedStudents, 1);
+addPagination(displayedStudents);
 
 const searchInput = document.querySelector('#search');
 const searchButton = document.querySelector('.search-button');
@@ -89,7 +91,7 @@ linkList.addEventListener('click', (e) => {
    if (e.target.tagName === 'BUTTON') {
       document.querySelector('.active').className = '';
       e.target.className = 'active';
-      showPage(data, e.target.textContent);
+      showPage(displayedStudents, e.target.textContent);
    }
 });
 
@@ -98,18 +100,19 @@ linkList.addEventListener('click', (e) => {
  *  matching names. If the names match, only the matching students display on the page.
  *  The page numbers update to align with the amount of students matched
  */
+
 searchInput.addEventListener('keyup', (e) => {
    e.preventDefault();
    const searchText = e.target.value.toLowerCase(); 
-   const searchedStudentList = [];
+   displayedStudents = []; // resetting array every time a search is performed
 
    for (let i = 0; i < data.length; i++) {
       const fullName = (data[i].name.first + ' ' + data[i].name.last).toLowerCase();
-        
-      if (fullName.includes(searchText)) {
-         searchedStudentList.push(data[i]);
+
+      if (fullName.includes(searchText)) { // always return true if search is blank ('')
+         displayedStudents.push(data[i]);
       }
    }
-   showPage(searchedStudentList, 1);
-   addPagination(searchedStudentList);
+   showPage(displayedStudents, 1);
+   addPagination(displayedStudents);
 }); 
