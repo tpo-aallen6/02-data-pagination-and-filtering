@@ -81,6 +81,7 @@ addPagination(displayedStudents)
 
 const searchInput = document.querySelector('#search')
 // const searchButton = document.querySelector('.search-button') !--fix this
+// add an event listener for the search button
 
 /**
  * Event listener that allows clicks to a page button and adds specific
